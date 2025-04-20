@@ -11,14 +11,9 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-#    let
-#	    system = "x86_64-linux";
-#	    pkgs = nixpkgs.legacyPackages.${system};
-#	  in
-#	  {
-      # use "nixos", or your hostname as the name of the configuration
-      # it's a better practice than "default" shown in the video
 
+      # use "nixos", or your hostname as the name of the configuration
+ 
 			nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
@@ -26,6 +21,5 @@
           inputs.home-manager.nixosModules.default
         ];
       };
-#   };
   };
 }
