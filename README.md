@@ -1,21 +1,14 @@
-[cloudgenius@vm:/etc]$ sudo su
-[sudo] password for cloudgenius: 
+## Begin
 
-[root@vm:/etc]# rm -rf nixos
-
-[root@vm:/etc]# git clone https://github.com/lvnilesh/vimjoyer ./nixos
-
-[root@vm:/etc]# chown -R cloudgenius:users ./nixos
-
-[root@vm:/etc]# exit
-
-[cloudgenius@vm:/etc]$ 
-
+```
+sudo su
+rm -rf /etc/nixos
+git clone https://github.com/lvnilesh/vimjoyer /etc/nixos
+chown -R cloudgenius:users /etc/nixos
+exit
 
 sudo nixos-rebuild switch --flake /etc/nixos/#nixos
-
-
-
+```
 
 ## edit configuration.nix
 
