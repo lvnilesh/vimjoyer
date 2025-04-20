@@ -30,3 +30,7 @@ nix flake lock
 https://github.com/vimjoyer
 
 https://github.com/vimjoyer/flake-starter-config
+
+```
+sudo virsh snapshot-revert nixos-unstable --snapshotname snapshot2 --running
+```
