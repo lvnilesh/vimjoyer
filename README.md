@@ -7,6 +7,7 @@ rm -rf /etc/nixos
 git clone https://github.com/lvnilesh/vimjoyer /etc/nixos
 chown -R cloudgenius:users /etc/nixos
 exit
+cd .
 ```
 ## rebuild with flakes enabled
 ```
