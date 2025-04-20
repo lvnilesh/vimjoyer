@@ -11,15 +11,30 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-
-      # use "nixos", or your hostname as the name of the configuration
  
 			nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./configuration.nix
+          ./hosts/nixos/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };
+
+			nixosConfigurations.nuc = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/nuc/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+
+			nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/asus/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+
   };
 }
