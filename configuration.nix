@@ -6,29 +6,23 @@
       inputs.home-manager.nixosModules.default
   ];
 
-  main-user.enable = true;
-  main-user.userName = "nilesh";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking.hostName = "vm";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "vm";
+    networkmanager.enable = true;
+  };
+  
   time.timeZone = "America/LosAngeles";
   i18n.defaultLocale = "en_US.UTF-8";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   
-  users.users.cloudgenius= {
-    isNormalUser = true;
-    initialPassword = "cdcd";
-    description = "Nilesh";
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      tree
-      # firefox
-      # thunderbird
-    ];
-  };
+  main-user.enable = true;
+  main-user.userName = "cloudgenius";
 
 	home-manager = {
 		extraSpecialArgs = { inherit inputs;};
@@ -38,19 +32,21 @@
 	};
 	
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    htop
-    btop
-    curl
-    wget
+    vim git htop btop curl wget
   ];
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-  programs.nix-ld.enable = true;
-  programs.nix-ld.package = pkgs.nix-ld-rs;
+
   services.openssh.enable = true;
+
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld-rs;
+    };
+  };
+
   system.stateVersion = "24.11";
 }

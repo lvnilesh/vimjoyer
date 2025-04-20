@@ -17,8 +17,14 @@ in
   config = lib.mkIf cfg.enable {
     users.users.${cfg.userName} = {
       isNormalUser = true;
-      initialPassword = "123";
+      initialPassword = "cdcd";
       description = "main user";
+      extraGroups = [ "wheel" ];
+      packages = with pkgs; [
+        tree
+        # firefox
+        # thunderbird
+      ];
 #     shell = pkgs.zsh;
     };
   };
