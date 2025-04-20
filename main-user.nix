@@ -19,7 +19,7 @@ in
       isNormalUser = true;
       initialPassword = "123";
       description = "main user";
-      shell = pkgs.zsh;
+#     shell = pkgs.zsh;
     };
   };
 }
