@@ -2,6 +2,7 @@
 
 ```
 sudo su
+
 cd /etc
 rm -rf /etc/nixos
 git clone https://github.com/lvnilesh/vimjoyer /etc/nixos
