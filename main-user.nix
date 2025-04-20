@@ -7,7 +7,7 @@ in
   options.main-user = {
     enable = lib.mkEnableOption "enable user module";
     userName = lib.mkOption {
-      defaul = "mainuser";
+      default = "mainuser";
       description = ''
         username
       '';
