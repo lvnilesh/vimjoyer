@@ -1,5 +1,4 @@
 ## Begin
-
 ```
 sudo su
 
@@ -22,15 +21,14 @@ sudo cp ~/.config/home-manager/home.nix /etc/nixos/
 ```
 
 ## lock flakes
-
 ```
 nix flake lock
 ```
 
 https://github.com/vimjoyer
-
 https://github.com/vimjoyer/flake-starter-config
 
+# restore VM snapshot
 ```
 sudo virsh snapshot-revert nixos-unstable --snapshotname snapshot2 --running
 ```
